@@ -1,0 +1,41 @@
+{% extends "./base_home.html" %} 
+{% block title %} Nosotros{% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href='{{url_for("static", filename = "css/home.css")}}'>
+{% endblock%}
+
+{% block body %}
+<main class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h1 class="text-center mb-4">Sobre Nosotros</h1>
+            <p class="text-justify">
+                Somos un grupo de estudiantes de la Universidad Tecnológica Nacional de Avellaneda, Graciela Pane, apasionados por la tecnología y el aprendizaje. Nuestro objetivo es ayudar a la comunidad educativa, proporcionando recursos que faciliten el aprendizaje y apoyen a nuestros compañeros en sus ejercicios y desafíos académicos. Nos dedicamos a recopilar ejercicios compartidos por estudiantes como nosotros, para que todos puedan practicar y mejorar en las materias que cursamos, desde programación hasta matemáticas, bases de datos y otras disciplinas clave.
+            </p>
+            <p class="text-justify">
+                Sabemos que mantenerse al día con las fechas de parciales, entregas de trabajos y otros eventos importantes puede ser un desafío, por lo que también ofrecemos un espacio dedicado a la publicación de noticias actualizadas sobre estos temas. Queremos que este sitio sea un recurso confiable para nuestros compañeros, donde puedan encontrar no solo ejercicios, sino también información clave para organizarse mejor y estar siempre preparados.
+            </p>
+            <p class="text-justify">
+                Además de los ejercicios recolectados por compañeros, en nuestra plataforma también encontrarás recursos relacionados con la programación, matemáticas, bases de datos, entre otras áreas fundamentales en nuestras carreras. Cada recurso ha sido cuidadosamente seleccionado para garantizar que sea útil y relevante para nuestro progreso académico. Creemos que al tener acceso a este tipo de material, podemos mejorar nuestras habilidades y estar mejor preparados para enfrentar los desafíos de nuestra vida universitaria.
+            </p>
+            <p class="text-justify">
+                Si tienes un emprendimiento, proyecto personal o si transmites contenido, ya sea relacionado con tecnología, videojuegos o cualquier otro tipo de contenido, nos encantaría ayudarte a darlo a conocer. Queremos ofrecer un espacio para que nuestros compañeros puedan compartir sus proyectos y talentos con la comunidad, conectando con otras personas interesadas en lo que hacen.
+            </p>
+            <p class="text-justify">
+                Te invitamos a explorar nuestro sitio y aprovechar todos los recursos que estamos preparando para ti. Si tienes algo que te gustaría aportar, como ejercicios, material de estudio o cualquier recurso adicional, no dudes en contactarnos. Queremos que esta plataforma crezca junto con la comunidad, ayudándonos mutuamente a lograr nuestras metas educativas.
+            </p>
+            <p class="text-justify">
+                Juntos podemos lograr grandes cosas!!
+            </p>            
+            <h5 class="text-end fst-italic">Equipo de Fuerza G.</h5>
+            <br>
+            <br>
+            <h2>Contactanos</h2>
+            <br>
+            <h4>fuerza.g.banana@gmail.com</h4>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

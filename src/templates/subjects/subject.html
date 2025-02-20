@@ -1,0 +1,265 @@
+{% extends "./base_home.html" %} 
+{% block title %} Album de ejercicios {% endblock %}
+
+{% block customCSS %}
+<link href="carousel.css" rel="stylesheet">
+
+<link rel="stylesheet" href='{{url_for("static", filename = "css/home.css")}}'>
+{% endblock%}
+
+{% block body %}
+    {% if list_exams %}
+        {% if list_exams[0][5] == "Matematica_ingreso" %}
+            <main>
+                <section class="py-5 text-center container">
+                    <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <h1 class="fw-light">Album de exames y ejercicios de Matematica ingreso</h1>
+                            <p class="lead text-muted">Explora una colección de exámenes y ejercicios de Matemática diseñados para ayudarte a dominar conceptos fundamentales. Encuentra todo lo que necesitas para practicar y mejorar tus habilidades matemáticas y ingresar a la carrera.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="album py-5 ">
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            {% for exam in list_exams %}
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="{{url_for('static', filename = exam[2])}} " draggable="false" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="Thumbnail">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ exam[1] }}</h5>
+                                        <p class="card-text">{{ exam[4][:100] }}...</p> 
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ url_for('view_exam', exam_id=exam[0]) }}" class="btn btn-warning">Ver</a>
+                                            </div>
+                                            <small class="text-muted">{{ exam[3] }}</small> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </main>
+        {% elif list_exams[0][5] == "Matematica_1" %}
+            <main>
+                <section class="py-5 text-center container">
+                    <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <h1 class="fw-light">Album de exames y ejercicios de Matematica 1</h1>
+                            <p class="lead text-muted">Perfecciona tus conocimientos en Matemática 1 con nuestra colección de exámenes y ejercicios. Aquí encontrarás recursos esenciales que te ayudarán a reforzar los conceptos básicos y prepararte para tus evaluaciones.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="album py-5 ">
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            {% for exam in list_exams %}
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="{{url_for('static', filename = exam[2])}} " draggable="false" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="Thumbnail">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ exam[1] }}</h5>
+                                        <p class="card-text">{{ exam[4][:100] }}...</p> 
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ url_for('view_exam', exam_id=exam[0]) }}" class="btn btn-warning">Ver</a>
+                                            </div>
+                                            <small class="text-muted">{{ exam[3] }}</small> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </main>
+        {% elif list_exams[0][5] == "Base_de_datos" %}
+            <main>
+                <section class="py-5 text-center container">
+                    <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <h1 class="fw-light">Album de exames y ejercicios de Base de datos</h1>
+                            <p class="lead text-muted">Accede a una serie de exámenes y ejercicios de Base de Datos que cubren desde los fundamentos hasta consultas. Practica con ejemplos reales y refuerza tu comprensión de cómo gestionar y manipular datos de manera efectiva.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="album py-5 ">
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            {% for exam in list_exams %}
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="{{url_for('static', filename = exam[2])}} " draggable="false" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="Thumbnail">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ exam[1] }}</h5>
+                                        <p class="card-text">{{ exam[4][:100] }}...</p> 
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ url_for('view_exam', exam_id=exam[0]) }}" class="btn btn-warning">Ver</a>
+                                            </div>
+                                            <small class="text-muted">{{ exam[3] }}</small> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </main>
+        {% elif list_exams[0][5] == "Estadistica" %}
+            <main>
+                <section class="py-5 text-center container">
+                    <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <h1 class="fw-light">Album de exames y ejercicios de Estadistica</h1>
+                            <p class="lead text-muted">Mejora tu comprensión de la Estadística con exámenes y ejercicios..</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="album py-5 ">
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            {% for exam in list_exams %}
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="{{url_for('static', filename = exam[2])}} " draggable="false" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="Thumbnail">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ exam[1] }}</h5>
+                                        <p class="card-text">{{ exam[4][:100] }}...</p> 
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ url_for('view_exam', exam_id=exam[0]) }}" class="btn btn-warning">Ver</a>
+                                            </div>
+                                            <small class="text-muted">{{ exam[3] }}</small> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </main>
+        {% elif list_exams[0][5] == "Ingles_1" %}
+            <main>
+                <section class="py-5 text-center container">
+                    <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <h1 class="fw-light">Album de exames y ejercicios de Ingles 1</h1>
+                            <p class="lead text-muted">Practica y mejora tu dominio del Inglés con una variedad de exámenes y ejercicios que te ayudarán a perfeccionar tus habilidades de lectura, escritura y comprensión. Ideal para reforzar el vocabulario y la gramática.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="album py-5 ">
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            {% for exam in list_exams %}
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="{{url_for('static', filename = exam[2])}} " draggable="false" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="Thumbnail">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ exam[1] }}</h5>
+                                        <p class="card-text">{{ exam[4][:100] }}...</p> 
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ url_for('view_exam', exam_id=exam[0]) }}" class="btn btn-warning">Ver</a>
+                                            </div>
+                                            <small class="text-muted">{{ exam[3] }}</small> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </main>
+        {% elif list_exams[0][5] == "Programacion_1" %}
+            <main>
+                <section class="py-5 text-center container">
+                    <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <h1 class="fw-light">Album de exames y ejercicios de Programacion 1</h1>
+                            <p class="lead text-muted">Desarrolla tus habilidades de Programación 1 con nuestra selección de exámenes y ejercicios. Desde conceptos básicos hasta programación estructurada, estos recursos están aquí para ayudarte a practicar y mejorar tu lógica de programación.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="album py-5 ">
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            {% for exam in list_exams %}
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="{{url_for('static', filename = exam[2])}} " draggable="false" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="Thumbnail">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ exam[1] }}</h5>
+                                        <p class="card-text">{{ exam[4][:100] }}...</p> 
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ url_for('view_exam', exam_id=exam[0]) }}" class="btn btn-warning">Ver</a>
+                                            </div>
+                                            <small class="text-muted">{{ exam[3] }}</small> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </main>
+        {% elif list_exams[0][5] == "Programacion_2" %}
+            <main>
+                <section class="py-5 text-center container">
+                    <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <h1 class="fw-light">Album de exames y ejercicios de Programacion 2</h1>
+                            <p class="lead text-muted">Avanza en tu camino hacia la maestría en Programación 2 con exámenes y ejercicios que abarcan estructuras de datos, algoritmos y programación orientada a objetos. Estos recursos te ayudarán a afianzar tus conocimientos y a prepararte para desafíos más complejos.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="album py-5 ">
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            {% for exam in list_exams %}
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img src="{{url_for('static', filename = exam[2])}} " draggable="false" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="Thumbnail">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ exam[1] }}</h5>
+                                        <p class="card-text">{{ exam[4][:100] }}...</p> 
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ url_for('view_exam', exam_id=exam[0]) }}" class="btn btn-warning">Ver</a>
+                                            </div>
+                                            <small class="text-muted">{{ exam[3] }}</small> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </main>
+        {% else %}
+            <h1 class="container-fluid title-exercises">No hay ejercicios todavia</h1>
+        {% endif %}
+    {% else %}
+        <h1 class="container-fluid title-exercises">No hay ejercicios todavia</h1>
+    {% endif %}
+        
+<script src="{{ url_for('static', filename='js/exclusive_content.js') }}"></script>
+{% endblock %}

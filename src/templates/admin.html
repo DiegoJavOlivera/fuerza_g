@@ -1,0 +1,107 @@
+{% extends "./base_home.html" %} 
+{% block title %} administrador {% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href='{{url_for("static", filename = "css/home.css")}}'>
+{% endblock%}
+
+{% block body %}
+
+{% if current_user.admin %}
+    {% if subject == "Subir_noticias"%}
+        <div class="container mt-5 p-5">
+            <h2 class="mb-4">Hola administrador {{current_user.name}} desea subir alguna noticia?</h2>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <br>
+                    {% for message in messages %}
+                        <div class="alert alert-primary alert-dismissible" role="alert">
+                            <strong>{{message}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form id="newsForm" action="/upload_news/Subir_noticias" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <label for="title" class="form-label">Título de la noticia</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Título de la noticia" required>
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">Contenido de la noticia</label>
+                    <textarea class="form-control" id="content" name="content" rows="5" placeholder="Contenido de la noticia" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Imagen</label>
+                    <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Título asunto del Mail</label>
+                    <input type="text" class="form-control" id="subject_news_title" name="subject_news_title" placeholder="Asunto" required>
+                </div>
+                <div class="mb-3">
+                    <label for="content-mail" class="form-label">Contenido de la noticia para el email</label>
+                    <textarea class="form-control" id="content_email" name="content_email" rows="5" placeholder="Contenido de la noticia para email" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-warning">Subir Noticia</button>
+            </form>
+        </div>
+    {% else %}
+        <div class="container mt-5 p-5">
+            <h2 class="mb-4">Hola administrador {{current_user.name}} desea subir algun modelo de examen?</h2>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <br>
+                    {% for message in messages %}
+                        <div class="alert alert-primary alert-dismissible" role="alert">
+                            <strong>{{message}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form id="newsForm" action="/upload_news/Subir_examen" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <label for="title" class="form-label">Título del modelo de examen</label>
+                    <input type="text" class="form-control" id="title_exam" name="title_exam" placeholder="Título del modelo de examen" required>
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">Contenido del modelo de examen</label>
+                    <textarea class="form-control" id="content_exam" name="content_exam" rows="5" placeholder="Contenido del modelo de examen" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Imagen</label>
+                    <input type="file" class="form-control" id="image_exam" name="image_exam" accept="image/*" required>
+                </div>
+                <div class="form-floating mb-3">
+                    <select name="sub_exam" class="form-select" id="subjec_exam" required>
+                        <option value="" disabled selected>Selecciona la materia del examen</option>
+                        <option value="Matematica_ingreso">Matematica ingreso</option>
+                        <option value="Matematica_1">Matematica 1</option>
+                        <option value="Base_de_datos">Base de datos</option>
+                        <option value="Estadistica">Estadistica</option>
+                        <option value="Ingles_1">Ingles 1</option>
+                        <option value="Programacion_1">Programacion 1</option>
+                        <option value="Programacion_2">Programacion 2</option>
+                    </select>
+                    <label for="floatingsubject" class="col-form-label me-3">Materia de examen</label>
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Título asunto del Mail</label>
+                    <input type="text" class="form-control" id="subject_mail_exam" name="subject_mail_exam" placeholder="Asunto de email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="content-mail" class="form-label">Contenido de los ejercicios para el email</label>
+                    <textarea class="form-control" id="content_email" name="content_email" rows="5" placeholder="Contenido de los ejercicios para el email" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-warning">Subir examen</button>
+            </form>
+        </div>
+    {% endif %}
+{% else %}
+    <h1 class="container-fluid">NO TIENE PERMISOS</h1>
+{% endif %}
+
+{% endblock %}

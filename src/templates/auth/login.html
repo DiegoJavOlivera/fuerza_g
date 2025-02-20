@@ -1,0 +1,53 @@
+{% extends "./base_login.html" %}
+{% block title %}
+Fuerza G - log in 
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href='{{url_for("static", filename = "css/login.css")}}'>
+{% endblock %}
+
+{% block body %}
+<div class="form-container">
+        <main class="form-signin">
+            <form action="{{ url_for('auth.login', next=request.args.get('next')) }}" method="POST">
+                <div class="text-center">
+                    <h1 class="text-center">    
+                        Bienvenidos a Fuerza G
+                    </h1>
+                    <img class="mb-4" src='{{url_for("static", filename="img/gorila.png")}}' alt="gorila" width="100" height="100">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <br>
+                            {% for message in messages %}
+                                <div class="alert alert-primary alert-dismissible" role="alert">
+                                    <strong>{{message}}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <h2 class="h3 mb-3 fw-normal">Iniciar sesión</h2>
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                </div>
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="emailAddress" name="emailAddress" required placeholder="emailAddress">
+                    <label for="emailAddress">Email</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" name="password" required placeholder="Password">
+                    <label for="password">Contraseña</label>
+                </div>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Recuerdame
+                    </label>
+                </div>
+                <button class="w-100 btn-lg btn btn-primary" type="submit">Iniciar sesión</button>
+                <a class="w-100 mt-1 btn-lg btn btn-secondary" href="{{url_for('auth.sign_up')}}">Registrarse</a>
+                <a class="w-100 mt-1 btn-lg btn btn-link" href="{{url_for('auth.forgot_password')}}">¿Olvidaste tu contraseña?</a>
+                <p class="mt-5 mb-3 text-muted">&copy; 2024 | Desarrollador DJO</p>
+            </form>
+        </main>
+    </div>
+{% endblock %}

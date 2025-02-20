@@ -1,0 +1,89 @@
+{% extends "./base_login.html" %}
+{% block title %}
+Sign up
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href='{{url_for("static", filename = "css/login.css")}}'>
+{% endblock %}
+
+{% block body %}
+<main class="container col-xl-10 col-xxl-8  px-4 py-5">
+    <div class="text-start">
+        <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary mb-3">Volver Atrás</a>
+    </div>
+    <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-5 fw-bold lh-1 mb-3">¡Ingresa a la Fuerza G!</h1>
+            <p class="col-lg-10 fs-5">
+                Para acceder a nuestros modelos de exámenes, parciales y mucho más contenido exclusivo, necesitas crear una cuenta. El registro es rápido y sencillo. <br><br>
+                Al registrarte, tendrás acceso a recursos valiosos que te ayudarán a prepararte mejor para tus estudios y exámenes. ¡No pierdas la oportunidad de sacar el máximo provecho de nuestras herramientas y materiales! Una vez registrado confirma tu correo electronico, <strong>Debe ser GMAIL.</strong> revisa en spam que puede estar ahi tambien.<br><br>
+                Regístrate ahora y comienza a explorar todo lo que tenemos para ofrecerte. <br><br>
+                <strong>Nota Importante:</strong> Fuerza G no es una cuenta oficial de la Universidad de Avellaneda Graciela Pane. Este sitio ha sido creado por estudiantes de primer año con el propósito de proporcionar recursos adicionales y apoyar a la comunidad académica. Los contenidos y opiniones expresados en esta página no reflejan necesariamente las posiciones oficiales de la universidad.
+            </p>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+            <form class="p-4 p-md-5 border rounded-3 bg-light" action="{{url_for('auth.sign_up')}}" method="POST">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <br>
+                        {%for message in messages %}
+                        <div class="alert alert-primary alert-dismissible" role="alert">
+                            <strong>{{message}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    
+                    {% endif %}
+                {% endwith %}
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email_address" required>
+                    <label for="floatingInput">Gmail</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required minlength="8">
+                    <label for="floatingPassword">Contraseña </label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingRepeatPassword" placeholder="Repeat Password" name="repeat_password" required minlength="8">
+                    <label for="floatingPassword">Repetir Contraseña</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingName" placeholder="Name" name="first_name" required>
+                    <label for="floatingPassword">Primer Nombre</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingLastName" placeholder="Last Name" name="last_name" required>
+                    <label for="floatingPassword">Apellido</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select name="gender" class="form-select" id="gender" required>
+                        <option value="" disabled selected>Selecciona tu genero</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <label for="floatingSex" class="col-form-label me-3">Genero</label>
+                </div>
+                <button class="w-100 btn-lg btn btn-success" type="submit">Registrarse</button>
+                <hr class="my-4">
+                <label class="checkbox-notification">
+                    <ul >                        
+                        <input type="checkbox" id="subscribe_to_news" name="subscribe_to_news" value="True"> Quiero recibir notificacion por mail sobre lo que se publique, (super recomendable).
+                    </ul>
+                    <ul>
+                        <input type="checkbox"  required> Acepto los terminos y condiciones de uso.
+                    </ul>
+                    <small class="text-muted">Al hacer clic en Registrarse, acepta los términos de uso.</small>
+                </label>
+            </form>
+        </div>
+    </div>
+</main>
+<footer class="footer mt-auto py-5 bg-light">
+    <div class="container">
+        <span class="text-muted">&copy; 2024 Fuerza G.</span>
+    </div>
+</footer>
+{% endblock %}

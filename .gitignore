@@ -1,0 +1,14 @@
+# Entorno virtual
+#venv/
+
+# Archivos de configuración del sistema
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Archivos de configuración de IDE
+.vscode/
+.idea/
+# Archivos de entorno
+#.env

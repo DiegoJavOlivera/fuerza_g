@@ -1,0 +1,20 @@
+{% extends "./base_home.html" %} 
+{% block title %} Ultimas Noticias {% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href='{{url_for("static", filename = "css/home.css")}}'>
+{% endblock%}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mb-4">{{ news[1] }}</h1> 
+            <img src="{{ url_for('static', filename=news[4]) }}" class="img-fluid mb-4" alt="{{ news[1] }}" width="900px" height="600px"> 
+            <p class="lead text-content-notice">{{ news[2] }}</p> 
+            <small class="text-muted">{{ news[3] }}</small> 
+            <hr>
+        </div>
+    </div>
+</div>
+{% endblock %}

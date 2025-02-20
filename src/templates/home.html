@@ -1,0 +1,286 @@
+{% extends "./base_home.html" %} 
+{% block title %} Home {% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href='{{url_for("static", filename = "css/home.css")}}'>
+{% endblock%}
+
+{% block body %}
+
+<main>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+            ></button>
+            <button
+                type="button"
+                data-bs-target="#myCarousel"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+            ></button>
+            <button
+                type="button"
+                data-bs-target="#myCarousel"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+            ></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                    <svg
+                    class="bd-placeholder-img"
+                    width="100%"
+                    height="100%"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                    >
+                    <rect width="100%" height="100%" fill="#777" />
+                    </svg>
+                    <img src="{{url_for('static', filename = 'img/img_home/llueve-diarios.png')}}" alt="">
+
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        {% if current_user.gender == "Masculino" %}
+                            <h1>Bienvenido {{ current_user.name }}</h1>
+                            <p>
+                                "¡No te pierdas las últimas novedades! Ingresa ahora para ver todas las noticias."
+                            </p>
+                            <p><a class="btn btn-lg btn-warning" href="{{url_for('news')}}">Ultimas noticias</a></p>
+                        {% else %}
+                            <h1>Bienvenida {{ current_user.name }}</h1>
+                            <p>
+                                "Fortalece tus conocimientos en matemáticas, estadística y otras materias clave. ¡El éxito te espera!"
+                            </p>
+                            <p><a class="btn btn-lg btn-warning" href="{{url_for('news')}}">Ultimas noticias</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <svg
+                class="bd-placeholder-img"
+                width="100%"
+                height="100%"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                preserveAspectRatio="xMidYMid slice"
+                focusable="false"
+                >
+                <rect width="100%" height="100%" fill="#777" />
+                </svg>
+                <img src="{{url_for('static', filename = 'img/img_home/alumnos-blur.png')}}" alt="" class="img-fluid">
+
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>¡Queremos saber tu opinión, {{ current_user.name }}!</h1>
+                        <p>"Nos encantaría que nos conozcas mejor y tu feedback es muy importante para nosotros. Envíanos tus sugerencias o comentarios para mejorar y ofrecerte la mejor experiencia de aprendizaje en matemáticas, estadística y más."</p>
+                        <p><a class="btn btn-lg btn-warning" href="{{url_for('about_us')}}">Nosotros</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <svg
+                class="bd-placeholder-img"
+                width="100%"
+                height="100%"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                preserveAspectRatio="xMidYMid slice"
+                focusable="false"
+                >
+                <rect width="100%" height="100%" fill="#777" />
+                </svg>
+                <img src="{{url_for('static', filename = 'img/img_home/numeros-binarios-.png')}}" alt="" class="img-fluid">
+                <div class="container">
+                    <div class="carousel-caption text-end">
+                        <h1>A lo que importa.</h1>
+                        <p>
+                            "Fortalece tus conocimientos en matemáticas, estadística y otras materias clave con estos ejercicios. ¡El éxito te espera!"
+                        </p>
+                        <p><a class="btn btn-lg btn-warning" href="{{url_for('upload_models_exam', subject = 'Matematica_1')}}">Matematica 1</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide="prev"
+            >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide="next"
+            >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Marketing messaging and featurettes
+        ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+    <!-- Three columns of text below the carousel -->
+        <!--<div class="row">
+            <div class="col-lg-4">
+                <svg
+                    class="bd-placeholder-img rounded-circle"
+                    width="140"
+                    height="140"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Placeholder: 140x140"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                >
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#777" />
+                    <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                </svg>
+
+                <h2>Heading</h2>
+                <p>
+                    Some representative placeholder content for the three columns of text
+                    below the carousel. This is the first column.
+                </p>
+                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+            </div>
+
+            <div class="col-lg-4">
+                <svg
+                    class="bd-placeholder-img rounded-circle"
+                    width="140"
+                    height="140"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Placeholder: 140x140"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                >
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#777" />
+                    <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                </svg>
+
+                <h2>Heading</h2>
+                <p>
+                    Another exciting bit of representative placeholder content. This time,
+                    we've moved on to the second column.
+                </p>
+                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+            </div>
+
+            <div class="col-lg-4">
+                <svg
+                    class="bd-placeholder-img rounded-circle"
+                    width="140"
+                    height="140"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Placeholder: 140x140"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                >
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#777" />
+                    <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                </svg>
+
+                <h2>Heading</h2>
+                <p>
+                    And lastly this, the third column of representative placeholder
+                    content.
+                </p>
+                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+            </div>
+        </div>
+    -->
+        <!-- /.row -->
+        
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider" />
+
+        <div class="row featurette ">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">
+                    Practica y Mejora tus Habilidades de
+                <span class="text-muted"> Programación.</span>
+                </h2>
+                <p class="lead">
+                    ¡No te quedes atrás! Pon a prueba tu ingenio con ejercicios de lógica aportados por todos. ¡La práctica hace al maestro!
+                </p>
+                <p><a class="btn btn-lg btn-warning" href="{{url_for('upload_models_exam', subject = 'Programacion_1')}}">Programacion 1</a></p>
+            </div>
+            <div class="col-md-5 container-img-card">
+                <img src="{{ url_for('static', filename='img/img_home/escritorio.jpg') }}" 
+                alt="Escritorio"
+                class="featurette-image img-fluid mx-auto"
+                >
+            </div>
+        </div>
+
+        <hr class="featurette-divider" />
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">
+                    Mejora practica con ejercicios aportados por compañeros de
+                    <span class="text-muted">Probabilidad y Estadistica</span>
+                </h2>
+                <p class="lead">
+                    Aca vas a encontrar ejercicios aportados por los mismos compañeros, ojala te ayude a la practica.
+                </p>
+                <p><a class="btn btn-lg btn-warning" href="{{url_for('upload_models_exam', subject = 'Estadistica')}}">Probabilidad y Estadistica</a></p>
+            </div>
+            <div class="col-md-5 container-img-card">
+                <img src="{{ url_for('static', filename='img/img_home/probabilidad-y-estadistica.png') }}" 
+                alt="Estadistica"
+                class="featurette-image img-fluid mx-auto"
+                >
+            </div>
+        </div>
+
+        <hr class="featurette-divider" />
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">
+                    Estamos preparando cosas <span class="text-muted">Para vos!!</span>
+                </h2>
+                <p class="lead">
+                    Estamos trabajando arduamente en la preparación de noticias frescas y contenido exclusivo para brindarte la mejor experiencia posible. Nuestro objetivo es ofrecerte información valiosa y recursos especiales que te ayudarán a estar al tanto de lo último. ¡Mantente atento a las novedades!
+                </p>
+            </div>
+            <div class="col-md-5 container-img-card">
+                <img src="{{ url_for('static', filename='img/img_home/estamos-trabajando.png') }}" 
+                alt="Estadistica"
+                class="featurette-image img-fluid mx-auto"
+                >
+            </div>
+        </div>
+
+        <hr class="featurette-divider" />
+
+        <h2 class="text-center fst-italic">"Nanos gigantium humeris insidentes"</h2>
+
+        <hr class="featurette-divider" />
+    </div>
+</main>
+
+{% endblock %}

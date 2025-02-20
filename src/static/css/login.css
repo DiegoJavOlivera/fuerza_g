@@ -1,0 +1,22 @@
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; 
+    padding: 1rem; 
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 360px;
+    padding: 2rem;
+    border-radius: .375rem;
+}
+
+@media (max-width: 576px) {
+    .form-signin {
+        width: 100%; 
+        padding: 1rem;
+    }
+}

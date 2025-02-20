@@ -1,0 +1,33 @@
+{% extends "./base_home.html" %} 
+{% block title %} Ultimas Noticias {% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href='{{url_for("static", filename = "css/home.css")}}'>
+{% endblock%}
+
+{% block body %}
+{% if news_list %}
+    <div class="container mt-4">
+        <div class="row">
+            {% for news in news_list %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename=news[4]) }}" class="card-img-top" alt="Imagen de la noticia">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ news[1] }}</h5>
+                            <p class="card-text">{{ news[2][:150] }}...</p>
+                            <p class="card-text"><small class="text-muted">{{ news[3] }}</small></p>
+                            <a href="{{ url_for('view_news', news_id=news[0]) }}" class="btn btn-warning">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% else %}
+<main>
+<h1 class="container-fluid">No hay noticias nuevas </h1>
+</main>
+{% endif %}
+
+{% endblock %}

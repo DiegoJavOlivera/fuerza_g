@@ -1,0 +1,35 @@
+{% extends "./base_home.html" %} 
+{% block title %} Fuerza G{% endblock %}
+
+{% block customCSS %}
+<link href="carousel.css" rel="stylesheet">
+<link rel="stylesheet" href='{{url_for("static", filename = "css/home.css")}}'>
+{% endblock%}
+
+
+{% block body %}
+{% if video_list %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Contenido Exclusivo</h1>
+        <div class="row">
+            {% for video in video_list %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ video[1] }}</h5> <!-- Nombre del video -->
+                        <video controls class="img-fluid">
+                            <source src="{{ url_for('static', filename=video[2]) }}" type="video/mp4">
+                            Tu navegador no soporta el elemento de video.
+                        </video>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% else %}
+<main>
+    <h1 class="container-fluid title-exercises">Muy pronto vas a encontrar algo nuevo.....</h1>
+</main>
+{% endif %}
+{% endblock %}
