@@ -6,10 +6,11 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    MYSQL_HOST = os.getenv("MYSQL_HOST")
-    MYSQL_USER = os.getenv("MYSQL_USER")
-    MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
-    MYSQL_DB = os.getenv("MYSQL_DB")
+    MYSQL_HOST = os.getenv("MYSQL_HOST", "localhost")
+    MYSQL_USER = os.getenv("MYSQL_USER", "diegolivera")
+    MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD","123456")
+    MYSQL_DB = os.getenv("MYSQL_DB", "flask")
+    SCHEMA_FILE = os.getenv("SCHEMA_FILE", "src/helpers/schema.sql")
     # aca comienza la configuracion para el envio de mails
 
     MAIL_SERVER = os.getenv("MAIL_SERVER")

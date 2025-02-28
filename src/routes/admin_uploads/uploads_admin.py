@@ -14,6 +14,16 @@ class UploadNews(MethodView):
         return render_template("admin.html", subject=admin_select)
 
     def post(self, admin_select):
+        """
+        Handle the form data to upload news or exams.
+
+        args:
+        -
+            admin_select (str): The option selected by the admin.
+        returns:
+        -
+            Response: The response to the admin's action.
+        """
         if admin_select == "Subir_noticias":
             return self.handle_news_upload()
         elif admin_select == "Subir_examen":

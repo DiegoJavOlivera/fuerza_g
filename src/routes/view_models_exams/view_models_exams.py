@@ -8,6 +8,7 @@ class ViewModelsExams(MethodView):
 
     def get(self, subject):
         list_exams = exam_model_manager.get_all_exams(subject)
+        print(subject)
         return render_template("/subjects/subject.html", list_exams = list_exams)
 
 view_models_exams_view = login_required(ViewModelsExams.as_view("view_models_exams"))

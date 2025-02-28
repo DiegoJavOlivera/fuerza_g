@@ -16,36 +16,36 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
             <div class="container-fluid position-nav">
-                <a class="navbar-brand" href='{{url_for("home")}}'><img src='{{url_for("static", filename = "img/gorila.png")}}' alt="" width="80" height="80"></a>
+                <a class="navbar-brand" href='{{url_for("home.home")}}'><img src='{{url_for("static", filename = "img/gorila.png")}}' alt="" width="80" height="80"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav position-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Inicio</a>
+                            <a class="nav-link active" aria-current="page" href="{{url_for('home.home')}}">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('news')}}">Ultimas Noticias</a>
+                            <a class="nav-link" href="{{url_for('view_news.view_news')}}">Ultimas Noticias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('about_us')}}">Nosotros</a>
+                            <a class="nav-link" href="{{url_for('about_us.about_us')}}">Nosotros</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Recursos
                             </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="{{url_for('upload_models_exam', subject = 'Matematica_ingreso')}}">Matematica ingreso</a></li>
-                                    <li><a class="dropdown-item" href="{{url_for('upload_models_exam', subject = 'Matematica_1')}}">Matematica 1</a></li>
-                                    <li><a class="dropdown-item" href="{{url_for('upload_models_exam', subject = 'Base_de_datos')}}">Base de datos</a></li>
-                                    <li><a class="dropdown-item" href="{{url_for('upload_models_exam', subject = 'Estadistica')}}">Estadistica</a></li>
-                                    <li><a class="dropdown-item" href="{{url_for('upload_models_exam', subject = 'Ingles_1')}}">Ingles 1</a></li>
-                                    <li><a class="dropdown-item" href="{{url_for('upload_models_exam', subject = 'Programacion_1')}}">Programacion 1</a></li>
-                                    <li><a class="dropdown-item" href="{{url_for('upload_models_exam', subject = 'Programacion_2')}}">Programacion 2</a></li>
+                                    <li><a class="dropdown-item" href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Matematica_ingreso')}}">Matematica ingreso</a></li>
+                                    <li><a class="dropdown-item" href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Matematica_1')}}">Matematica 1</a></li>
+                                    <li><a class="dropdown-item" href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Base_de_datos')}}">Base de datos</a></li>
+                                    <li><a class="dropdown-item" href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Estadistica')}}">Estadistica</a></li>
+                                    <li><a class="dropdown-item" href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Ingles_1')}}">Ingles 1</a></li>
+                                    <li><a class="dropdown-item" href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Programacion_1')}}">Programacion 1</a></li>
+                                    <li><a class="dropdown-item" href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Programacion_2')}}">Programacion 2</a></li>
                                 </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('force_g')}}">Fuerza G</a>
+                            <a class="nav-link" href="{{url_for('force_g.force_g')}}">Fuerza G</a>
                         </li>
                         {% if current_user.admin %}
                         <li class="nav-item dropdown">
@@ -53,14 +53,14 @@
                             Administrar
                             </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="{{url_for('upload_news', admin_select = 'Subir_noticias')}}">Cargar Noticias</a></li>
-                                    <li><a class="dropdown-item" href="{{url_for('upload_news', admin_select = 'Subir_examen')}}">Cargar Modelos</a></li>
+                                    <li><a class="dropdown-item" href="{{url_for('uploads_admin.upload_news', admin_select = 'Subir_noticias')}}">Cargar Noticias</a></li>
+                                    <li><a class="dropdown-item" href="{{url_for('uploads_admin.upload_news', admin_select = 'Subir_examen')}}">Cargar Modelos</a></li>
                                 </ul>
                         </li>
                         {% endif %}
                         <li class="nav-item">
-                            <form action="{{ url_for('log_out') }}" method="POST">
-                                {{ csrf_token() }}
+                            <form action="{{ url_for('log_out.log_out') }}" method="POST">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                                 <button type="submit" class="nav-link">Cerrar sesión</button>
                             </form>
                         </li>                        
@@ -89,17 +89,17 @@
                     <div class="row">
                         <div class="col-6 col-md-6">
                             <ul class="list-unstyled">
-                                <li><a href="{{url_for('upload_models_exam', subject = 'Matematica_ingreso')}}" class="text-dark">Matematica Ingreso</a></li>
-                                <li><a href="{{url_for('upload_models_exam', subject = 'Matematica_1')}}" class="text-dark">Matematica 1</a></li>
-                                <li><a href="{{url_for('upload_models_exam', subject = 'Base_de_datos')}}" class="text-dark">Base de Datos</a></li>
+                                <li><a href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Matematica_ingreso')}}" class="text-dark">Matematica Ingreso</a></li>
+                                <li><a href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Matematica_1')}}" class="text-dark">Matematica 1</a></li>
+                                <li><a href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Base_de_datos')}}" class="text-dark">Base de Datos</a></li>
                             </ul>
                         </div>
                         <div class="col-6 col-md-6">
                             <ul class="list-unstyled">
-                                <li><a href="{{url_for('upload_models_exam', subject = 'Estadistica')}}" class="text-dark">Estadística</a></li>
-                                <li><a href="{{url_for('upload_models_exam', subject = 'Ingles_1')}}" class="text-dark">Inglés 1</a></li>
-                                <li><a href="{{url_for('upload_models_exam', subject = 'Programacion_1')}}" class="text-dark">Programación 1</a></li>
-                                <li><a href="{{url_for('upload_models_exam', subject = 'Programacion_2')}}" class="text-dark">Programación 2</a></li>
+                                <li><a href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Estadistica')}}" class="text-dark">Estadística</a></li>
+                                <li><a href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Ingles_1')}}" class="text-dark">Inglés 1</a></li>
+                                <li><a href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Programacion_1')}}" class="text-dark">Programación 1</a></li>
+                                <li><a href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Programacion_2')}}" class="text-dark">Programación 2</a></li>
                             </ul>
                         </div>
                     </div>
@@ -109,9 +109,9 @@
                 <div class="col-md-3 mb-4">
                     <h5 class="text-uppercase">Navegación</h5>
                     <ul class="list-unstyled">
-                        <li><a href="{{url_for('home')}}" class="text-dark">Inicio</a></li>
-                        <li><a href="{{url_for('news')}}" class="text-dark">Ultimas noticias</a></li>
-                        <li><a href="{{url_for('about_us')}}" class="text-dark">Nosotros</a></li>
+                        <li><a href="{{url_for('home.home')}}" class="text-dark">Inicio</a></li>
+                        <li><a href="{{url_for('view_news.view_news')}}" class="text-dark">Ultimas noticias</a></li>
+                        <li><a href="{{url_for('about_us.about_us')}}" class="text-dark">Nosotros</a></li>
                     </ul>
                 </div>
     
@@ -122,7 +122,7 @@
                     <a href="https://www.youtube.com/@FuerzaG-z1x" class="text-dark footer-icon youtube mx-3"><i class="fab fa-youtube"></i></a>
                     <a href="https://www.tiktok.com" class="text-dark footer-icon tiktok mx-3"><i class="fab fa-tiktok"></i></a>
                     <h5 class="text-uppercase mt-3">Contacto</h5>
-                    <a href="{{url_for('about_us')}}" class="text-dark footer-icon gmail"><i class="fas fa-envelope"></i></a>
+                    <a href="{{url_for('about_us.about_us')}}" class="text-dark footer-icon gmail"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>

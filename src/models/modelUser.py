@@ -76,10 +76,10 @@ class ModelUser:
 
         """
         
-        q_sql = """INSERT INTO lado_oscuro_usuarios_temporales (email, password , name ,lastName, gender, receive_email_notifications)
-        VALUES (%s, %s, %s, %s, %s, %s)"""
+        q_sql = """INSERT INTO lado_oscuro_usuarios_temporales (id_user ,email, password , name ,lastName, gender, receive_email_notifications)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)"""
         hashed_password = user.hash_password_generate(user.password)
-        self.connection_db.execute_query(q_sql, (user.email, hashed_password, user.name, user.last_name, user.gender, user.receive_not), commit=True)
+        self.connection_db.execute_query(q_sql, (user.id, user.email, hashed_password, user.name, user.last_name, user.gender, user.receive_not), commit=True)
 
     def move_to_active_user(self,email:str) -> bool:
         """
@@ -248,9 +248,9 @@ class ModelUser:
             User | None: A User object if the user exists, otherwise None.
         """
         q_sql = """SELECT id_user, email, password, name, lastName, gender, payment_service_status, admin, receive_email_notifications FROM user_lado_oscuro 
-        WHERE id = %s """
+        WHERE id_user = %s """
         row = self.connection_db.execute_query(q_sql,(id,),fetchone=True)
-        if row != None:
+        if row:
             logged_user = User(row[0], row[1], None, row[3], row[4], row[5], row[6], row[7], row[8])
             return logged_user
         

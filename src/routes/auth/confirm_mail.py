@@ -13,12 +13,12 @@ class ConfirmMail(MethodView):
         if deserialized_email:
             if model_user.move_to_active_user(deserialized_email):
                 flash("El usuario se registro con exito")
-                return redirect(url_for("login"))
+                return redirect(url_for("auth.login"))
 
             flash("El correo electrónico que intentas registrar ya se encuentra registrado.")
-            return redirect(url_for("login"))
+            return redirect(url_for("auth.login"))
         flash('El enlace de confirmación ha expirado. Por favor, regístrate de nuevo.')
-        return redirect(url_for("sign_up"))
+        return redirect(url_for("auth.sign_up"))
       
 
 confirm_mail_view = ConfirmMail.as_view("confirm_mail")

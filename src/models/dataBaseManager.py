@@ -1,4 +1,4 @@
-
+from flask import current_app
 
 
 class DataBaseManager:
@@ -10,11 +10,10 @@ class DataBaseManager:
 
         Args:
             db_connection (object): The database connection object used for executing queries.
+            schema_file (str): The path to the SQL file containing the database schema.
         """
         self.db_connection = db_connection
         self.schema_file = schema_file
-        self.initialize_database()
-
 
     def execute_query(self,query: str, params=(), commit=False, fetchone=False, fetchvalue=False):
         """
@@ -68,7 +67,7 @@ class DataBaseManager:
                         self.execute_query(statement, commit=True)
             except Exception as ex:
                 raise Exception(f"Error inicializando la base de datos {ex}")
-    
+        
 
     def is_database_initialized(self):
         """
@@ -79,6 +78,7 @@ class DataBaseManager:
         """
         try:
             result = self.execute_query("SHOW TABLES", fetchone=True)
+
             return bool(result)
         except Exception:
             return False

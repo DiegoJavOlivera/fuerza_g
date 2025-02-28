@@ -23,8 +23,8 @@ class SignUp(MethodView):
         if User.check_password_repeat(password, repeat_password) and User.check_google_mail(email):
 
             if not model_user.email_exist(email) and not model_user.email_exist_current_user(email):
-                model_user.save_temp_user(User(email, password, first_name, last_name, gender, receive_notification))
-                token = serializer.dumps(email, salt=os.getenv("SALT"))
+                model_user.save_temp_user(User(None, email, password, first_name, last_name, gender, receive_notification))
+                token = serializer.generate(email)
                 confirm_url = url_for("auth.confirm_mail", token = token ,_external = True)
                 email_service.sends_emails(render_template("auth/confirm_email.html", confirm_url=confirm_url), email, "Fuerza G - Confirma tu direccion de correo electronico.") 
                 flash("El mail de confirmacion se a enviado a su correo electronico, verificalo tienes hasta 1 HORA PARA PODER HACERLO.")

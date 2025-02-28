@@ -12,6 +12,7 @@ from models.examModelManager import ExamModelManager
 from models.token_serializer import TokenSerializer
 from models.entities.user import User
 from dotenv import load_dotenv
+
 import os
 
 load_dotenv()
@@ -29,7 +30,6 @@ news_manager = NewsManager(db_manager)
 image_handler = ImageHandler()
 exam_model_manager = ExamModelManager(db_manager)
 serializer = TokenSerializer(os.getenv("SECRET_KEY"), os.getenv("SALT"))
-
 
 
 @login_manager_app.user_loader

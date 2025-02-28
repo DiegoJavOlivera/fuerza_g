@@ -8,6 +8,9 @@ class TokenSerializer:
         self.salt = salt
 
     def generate(self, data):
+        """
+        Generates a token with the provided data.
+        """
         return self.serializer.dumps(data, salt=self.salt)
 
     def deserialize(self, token, max_age=3600):

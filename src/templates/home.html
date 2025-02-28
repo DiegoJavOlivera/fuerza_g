@@ -53,7 +53,7 @@
                             <p>
                                 "¡No te pierdas las últimas novedades! Ingresa ahora para ver todas las noticias."
                             </p>
-                            <p><a class="btn btn-lg btn-warning" href="{{url_for('news')}}">Ultimas noticias</a></p>
+                            <p><a class="btn btn-lg btn-warning" href="{{url_for('view_news.view_news')}}">Ultimas noticias</a></p>
                         {% else %}
                             <h1>Bienvenida {{ current_user.name }}</h1>
                             <p>
@@ -82,7 +82,7 @@
                     <div class="carousel-caption">
                         <h1>¡Queremos saber tu opinión, {{ current_user.name }}!</h1>
                         <p>"Nos encantaría que nos conozcas mejor y tu feedback es muy importante para nosotros. Envíanos tus sugerencias o comentarios para mejorar y ofrecerte la mejor experiencia de aprendizaje en matemáticas, estadística y más."</p>
-                        <p><a class="btn btn-lg btn-warning" href="{{url_for('about_us')}}">Nosotros</a></p>
+                        <p><a class="btn btn-lg btn-warning" href="{{url_for('about_us.about_us')}}">Nosotros</a></p>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
                         <p>
                             "Fortalece tus conocimientos en matemáticas, estadística y otras materias clave con estos ejercicios. ¡El éxito te espera!"
                         </p>
-                        <p><a class="btn btn-lg btn-warning" href="{{url_for('upload_models_exam', subject = 'Matematica_1')}}">Matematica 1</a></p>
+                        <p><a class="btn btn-lg btn-warning" href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Matematica_1')}}">Matematica 1</a></p>
                     </div>
                 </div>
             </div>
@@ -225,7 +225,7 @@
                 <p class="lead">
                     ¡No te quedes atrás! Pon a prueba tu ingenio con ejercicios de lógica aportados por todos. ¡La práctica hace al maestro!
                 </p>
-                <p><a class="btn btn-lg btn-warning" href="{{url_for('upload_models_exam', subject = 'Programacion_1')}}">Programacion 1</a></p>
+                <p><a class="btn btn-lg btn-warning" href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Programacion_1')}}">Programacion 1</a></p>
             </div>
             <div class="col-md-5 container-img-card">
                 <img src="{{ url_for('static', filename='img/img_home/escritorio.jpg') }}" 
@@ -246,7 +246,7 @@
                 <p class="lead">
                     Aca vas a encontrar ejercicios aportados por los mismos compañeros, ojala te ayude a la practica.
                 </p>
-                <p><a class="btn btn-lg btn-warning" href="{{url_for('upload_models_exam', subject = 'Estadistica')}}">Probabilidad y Estadistica</a></p>
+                <p><a class="btn btn-lg btn-warning" href="{{url_for('uploads_models_exams.view_models_exams', subject = 'Estadistica')}}">Probabilidad y Estadistica</a></p>
             </div>
             <div class="col-md-5 container-img-card">
                 <img src="{{ url_for('static', filename='img/img_home/probabilidad-y-estadistica.png') }}" 
