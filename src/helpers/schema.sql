@@ -22,8 +22,8 @@ CREATE TABLE IF NOT EXISTS lado_oscuro_usuarios_temporales (
     name VARCHAR(20) NOT NULL,
     lastName VARCHAR(20) NOT NULL,
     gender ENUM('Masculino', 'Femenino', 'Otro') NOT NULL,
-    confirm TINYINT(1) DEFAULT 0,
     receive_email_notifications TINYINT(1) DEFAULT 0,
+    confirm TINYINT(1) DEFAULT 0,
     INDEX(email)
 );
 

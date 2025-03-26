@@ -14,7 +14,7 @@ class ViewExam(MethodView):
         
 
 view_exam_view = login_required(ViewExam.as_view("view_exam"))
-view_models_exams_bp.add_url_rule("/view_exams/<int:exam_id>", view_func=view_exam_view, methods=["GET"])
+view_models_exams_bp.add_url_rule("/view_exam/<int:exam_id>", view_func=view_exam_view, methods=["GET"])
 
 
 #@app.route("/upload_models_exam/view_exam/<int:exam_id>")

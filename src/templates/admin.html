@@ -22,7 +22,7 @@
                     {% endfor %}
                 {% endif %}
             {% endwith %}
-            <form id="newsForm" action="/upload_news/Subir_noticias" method="POST" enctype="multipart/form-data">
+            <form id="newsForm" action="{{url_for('uploads_admin.upload_news', admin_select = 'Subir_noticias')}}" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <label for="title" class="form-label">Título de la noticia</label>
@@ -61,7 +61,7 @@
                     {% endfor %}
                 {% endif %}
             {% endwith %}
-            <form id="newsForm" action="/upload_news/Subir_examen" method="POST" enctype="multipart/form-data">
+            <form id="newsForm" action="{{url_for('uploads_admin.upload_news', admin_select = 'Subir_examen')}}" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <label for="title" class="form-label">Título del modelo de examen</label>

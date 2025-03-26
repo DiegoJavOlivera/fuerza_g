@@ -77,9 +77,9 @@ class ModelUser:
         """
         
         q_sql = """INSERT INTO lado_oscuro_usuarios_temporales (id_user ,email, password , name ,lastName, gender, receive_email_notifications)
-        VALUES (%s, %s, %s, %s, %s, %s, %s)"""
+        VALUES (%s, %s, %s, %s, %s, %s ,%s)"""
         hashed_password = user.hash_password_generate(user.password)
-        self.connection_db.execute_query(q_sql, (user.id, user.email, hashed_password, user.name, user.last_name, user.gender, user.receive_not), commit=True)
+        self.connection_db.execute_query(q_sql, (user.id, user.email, hashed_password, user.name, user.last_name, user.gender, user.receive_notification), commit=True)
 
     def move_to_active_user(self,email:str) -> bool:
         """

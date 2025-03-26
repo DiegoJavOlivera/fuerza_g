@@ -11,7 +11,7 @@ class ForgotPassword(MethodView):
         return render_template("auth/forgot_password.html")
 
     def post(self):
-        email = request.form["emailAddress"].strip()
+        email = request.form["email_address"].strip()
         if User.check_google_mail(email):
             if model_user.email_exist(email):
                 token = serializer.generate(email)

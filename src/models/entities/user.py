@@ -13,7 +13,7 @@ class User(UserMixin):
         self.gender = gender
         self.payment_service_status = payment_service_status
         self.admin = admin
-        self.receive_not = receive_notification
+        self.receive_notification = receive_notification
 
     @classmethod
     def check_password(cls, hashed_password, password):

@@ -19,11 +19,10 @@ class SignUp(MethodView):
         last_name = request.form["last_name"].capitalize().strip()
         gender = request.form["gender"].strip()
         receive_notification = request.form.get("subscribe_to_news") == "True"
-
         if User.check_password_repeat(password, repeat_password) and User.check_google_mail(email):
 
             if not model_user.email_exist(email) and not model_user.email_exist_current_user(email):
-                model_user.save_temp_user(User(None, email, password, first_name, last_name, gender, receive_notification))
+                model_user.save_temp_user(User(None, email, password, name=first_name, last_name=last_name, gender=gender, receive_notification=receive_notification))
                 token = serializer.generate(email)
                 confirm_url = url_for("auth.confirm_mail", token = token ,_external = True)
                 email_service.sends_emails(render_template("auth/confirm_email.html", confirm_url=confirm_url), email, "Fuerza G - Confirma tu direccion de correo electronico.") 
