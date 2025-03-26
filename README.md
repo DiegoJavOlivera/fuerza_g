@@ -1,6 +1,6 @@
 # Fuerza G
 
-Fuerza G es una aplicación web desarrollada en **Flask** que permite [breve descripción de la funcionalidad principal del proyecto, como gestión de usuarios, autenticación, visualización de contenido, etc.]. Está diseñada para ofrecer una [funcionalidad/experiencia] eficiente y fácil de usar para [público objetivo].
+Fuerza G es una aplicación web desarrollada en **Flask** 
 
 ## Tecnologías utilizadas
 
