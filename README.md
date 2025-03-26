@@ -1,6 +1,6 @@
 # Fuerza G
 
-Fuerza G es una aplicación web desarrollada en **Flask** 
+Fuerza G es una aplicación web desarrollada en **Flask** que permite a los estudiantes de la facultad acceder a modelos de parciales y mantenerse informados con noticias actualizadas. Su objetivo es facilitar el estudio y la organización académica proporcionando un espacio centralizado donde los alumnos puedan encontrar material de referencia y novedades relevantes
 
 ## Tecnologías utilizadas
 
